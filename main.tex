@@ -1,0 +1,79 @@
+\documentclass[twoside, 11pt, ngerman, a4paper, biblography=totoc]{scrartcl}
+
+%listof=totocnumbered,bibliography=totocnumbered,
+% if using scrartcl: \setkomafont{sectioning}{\rmfamily\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Usepackages						                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{packages} % packages that might be usefull (see file packages.sty)
+%% If needed, add addiional Packages here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modify Experiment Name %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{	\large Physikalisches Institut Universität Freiburg\\ % Your institution
+	\large Hermann-Herder-Str. 3, 79104 Freiburg\\[5mm]
+	\Large Anfänger Praktikum I \\[5mm] \Huge\textbf{Versuch X\\ Name des Versuchs}}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Modify Tutor Name %
+%%%%%%%%%%%%%%%%%%%%%
+\author{
+	\large % Your Name
+	From \textsc{Pettersson}\thanks{{\href{mailto:pettersson@example.com}{pettersson@example.com}}}\ and \textsc{Findus}\thanks{{\href{mailto:Findus@uni-freiburg.de}{Findus@uni-freiburg.de}}} \\
+	\large Gruppep xxx \\[5mm]
+	\large Assistant: \\[6mm] % Tutor name
+	%\vspace{-5mm}
+}
+
+\normalsize \date{Datum der Durchführung: \today}
+
+\begin{document}
+	% Titlepage
+	\maketitle
+	\thispagestyle{empty}
+	% Empty backside of Titlepage
+	\newpage
+	\thispagestyle{empty}
+	\null
+	\newpage
+
+	% Table of Contents page
+	\newpage
+	\tableofcontents
+	\newpage
+	\thispagestyle{empty}
+	\null
+	\newpage
+
+	%%%%%%%%%%%%%%%%%%%%%
+	% Add Contents Here %
+	%%%%%%%%%%%%%%%%%%%%%
+
+	\input{sections/1_ziel}
+	\input{sections/2_durchfuehrung}
+	\input{sections/3_auswertung}
+	\input{sections/4_diskussion}
+	\newpage
+	\input{sections/5_anhang}
+	\newpage
+	\input{sections/6_laborheft}
+	\newpage
+	\input{sections/7_erklaerung}
+
+	%%%%%%%%%%%%%%%%%%%%%
+
+	\clearpage
+
+	\addcontentsline{toc}{section}{List of Figures}
+	\listoffigures
+	\addcontentsline{toc}{section}{List of Tables}
+	\listoftables
+
+	\addcontentsline{toc}{section}{References}
+	%\bibliographystyle{plain}
+	\bibliographystyle{unsrt}
+	\bibliography{bibliography.bib}
+\end{document}

@@ -1,0 +1,157 @@
+
+\documentclass[twoside, 11pt, ngerman, a4paper, biblography=totoc]{scrartcl}
+
+\usepackage{packages} 
+
+\lstset{%
+  language=TeX,                % choose the language of the code
+  basicstyle=\ttfamily\footnotesize\color{black} ,       % the size of the fonts that    are used for the code
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at    whitespace
+  %keywordstyle=\color{white},
+  %commentstyle=\color{white},
+  %stringstyle=\color{white},
+  %numberstyle=\tiny\color{midgray},  % the style that is used for the line-numbers
+  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                              % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  frame=none,
+  %rulesepcolor=\color{darkgray},
+  lineskip={-1.5pt}, % single line spacing
+  aboveskip=1.5\bigskipamount,
+  belowskip=\smallskipamount,
+  escapechar={\@},
+  showstringspaces=false,
+  %backgroundcolor=\color{black}
+}
+
+\begin{document}
+
+\section{Beispiele und Tipps}
+Hier ein paar Beispiele und Tipps für das erstellen eures Protokolls mit \LaTeX. Kein Anspruch auf Vollständigkeit.
+
+\subsection{Allgemeines}
+Overleaf
+
+\url{https://de.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_1)\%3A_Basic_Structure}
+
+\subsection{Abbildung}
+Erstellt ihr Plots mit Python o.ä. lohnt es sich immer diese als Vektorgrafik in einer PDF abzuspeichern. Sorgt für kleien Datein und alles bleibt unverpixelt.\\
+
+Um eine Abbildung einzubinden benötigen wir eine Figure Umgebung. Der Folgende Code
+\begin{lstlisting}[language=Tex]
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{../figures/example}
+    \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verständlich ist.}
+    \label{fig:example}
+\end{figure}
+\end{lstlisting}
+erzeugt diese Abbildung:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{../figures/example}
+    \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verständlich ist.}
+    \label{fig:example}
+\end{figure}
+
+Ein paar Details dazu:
+\begin{itemize}
+	\item \texttt{width = 0.8\textbackslash textwidth} bestimmt die Breite im Verhältnis zur Textbreite des Dokuments
+	\item \texttt{../figures/example} ist der (relative) Pfad der Bilddatei. 
+	\item \texttt{\textbackslash label\{fig:example\}} Gibt dem Objekt einen Namen, mit dem wir darauf zugreifen können, z.B. als Verweis: \cref{fig:example} (Verlinkung zum klicken)
+	\item $[$h$]$ definiert die Postion der Abbildung im Dokument (h = here, also möglist nah am Text). Insgesamt ist es nicht notwendig, dass Abbildungen direkt an der Textstelle sind, v.a. wenn das zu halbleeren Seiten führt.
+\end{itemize}
+
+Subfigures ermöglichen das Neben/Übereinander stellen mehrerer Figures:
+
+\begin{lstlisting}[language=Tex]
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 1}
+         \label{fig:subfig1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 2}
+         \label{fig:subfig2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 3}
+         \label{fig:subfig3}
+     \end{subfigure}
+        \caption{Three figures}
+        \label{fig:three graphs}
+\end{figure}
+\end{lstlisting}
+
+%\begin{lstlisting}[language=Tex]
+\begin{figure}[h!]
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 1}
+         \label{fig:subfig1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 2}
+         \label{fig:subfig2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 3}
+         \label{fig:subfig3}
+     \end{subfigure}
+        \caption{Three figures}
+        \label{fig:three graphs}
+\end{figure}
+%\end{lstlisting}
+
+\texttt{[t]\{0.3\textbackslash textwidth\}} definiert die Breite der Einzelnen Subfigures (alle: 0.3+0.3+0.3 = 0.9).
+
+\subsection{Tabelle}
+
+\subsection{Verweise und Zitate}
+%\ref{}
+%cref
+%autoref
+\subsection{siunitx}
+Das package \texttt{siunitx} 
+
+Darstellung der Unsicherheiten als +/-, (), ...
+\begin{verbatim}
+	\SI{Bestwert(Unsicherheit)}{Einheit}
+\end{verbatim}
+
+
+Für optionen siehe z.B.: https://www.namsu.de/Extra/pakete/Siunitx.html
+
+\subsection{Code}
+Code can in LaTeX z.B. mit dem package \texttt{lstlisting} eingebunden werden. Entweder in der Umgebung
+\begin{verbatim}
+\begin{lstlisting}
+		Put your code here.
+\end{lstlisting}
+\end{verbatim}
+oder aus einer Datei 
+\begin{verbatim}
+		\lstinputlisting{filename.py}
+\end{verbatim}
+
+\end{document}
