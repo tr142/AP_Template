@@ -2,16 +2,12 @@
 \setkomafont{sectioning}{\rmfamily\bfseries} % Make Titles and Toc have correct fontfamily
 \usepackage{lmodern} % apparently this font is close to the standard computer modern but less pixelated in pdfs
 
-
 %German and foreign characters
 \usepackage[utf8]{inputenc} % utf8 encoding, umlauts... % this line is obsolete since 2018, utf8 is now the standard
 \usepackage[T1]{fontenc} % correct searching and copying of umlauts in pdfs
 \usepackage[ngerman]{babel} % document germanization of dates and so on
-%\usepackage[english]{babel} % set automatic titles (like toc) to english names
-\usepackage{csquotes} % Easy quotation marks
 \usepackage{textgreek} % greek letters in textmode
 \usepackage{upgreek} % greek letters in textmode version 2
-
 
 %Graphics
 \usepackage{graphicx} % embed graphics % [draft] option for faster compiling with image placeholders
@@ -19,112 +15,50 @@
 
 %Math
 \usepackage{amsmath} % important math environment (used for cleverref)
-\usepackage{amsthm}
-%\usepackage{amsfonts} % mathmatical fonts
-\usepackage{amssymb} % mathmatical symbols
-\usepackage{nicefrac}  % adds \nicefrac: a/b fraction display
-%\usepackage{cancel}  % adds \cancel which adds strikethrough
-\usepackage{mathtools} % From added symbols (:=) to only numbering referenced equations
-% better plus and minus for unsymm. uncertainties in tabulars
-\newcommand{\unc}[2]{^{\texttt{+}#1}_{\texttt{-}#2}}
 
 %Floats
 \usepackage[font={small},format=plain,width=0.9\textwidth]{caption} % modify caption behaviour not needed (position=bottom)
-\usepackage[subrefformat=parens,labelformat=simple]{subcaption} % better version of subfigure % modify subfigures and subcaptions behaviour % use \subref for subfigures (with added parentheses)
-\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\usepackage{subcaption} % better version of subfigure 
 \usepackage{float} % allows for [H] (dont float at all) option for floats
-\usepackage{rotating}
 
 % Tabular options
-\usepackage{booktabs} % adds \toprule, \midrule, \cmidrule, \bottomrule for nicer tables
 \renewcommand{\arraystretch}{1.3} % more vertical room in every tabular row
-%\setlength{\tabcolsep}{4pt} % squish rows together horizontally (default is 6pt)
-\usepackage{multirow}
-%\usepackage{multicol}
+\usepackage{multirow} % allow multirows
+\usepackage{multicol} % allow multicolumns
 \usepackage{longtable} % Tables over some pages
-\usepackage[flushleft]{threeparttable}
 
 % Figures
-\captionsetup[figure]{labelfont=bf}
+\captionsetup[figure]{labelfont=bf} % bold figure captions
 
 % Equations
 \numberwithin{equation}{section}
 
-% Code
-\usepackage{listings} % 
-
-
-\usepackage{setspace} % import before hyperref otherwise footnotes make problems
-
 %Hyperlinks
 \usepackage[hidelinks]{hyperref}  % hyperlinks to section or url, hidelinks makes them invisible
 \usepackage[nameinlink,capitalise,noabbrev]{cleveref} % smart automatic referenzing (import after hyperref!) % include the name in the link and capitalize all names
-%\Crefname{figure}{Figure}{Figures} % Rename Figures in the caption from "Fig." to "Figure"
-%\crefname{figure}{figure}{figures} % only use this if the capitalise option is off
-%\Crefname{equation}{Equation}{Equations} % Rename Equations in the caption from "Eq." to "Equation"
 \usepackage{url} % smart handling of linebreaks in url links
-%Bib
-%\usepackage{natbib}
-%\setlength{\bibsep}{6pt plus 0.3ex}
-
-%Typesetting
-\usepackage{microtype} % Subliminal refinements towards typographical perfection
-\usepackage{xspace} % define macros that automatically add a space where it belongs (or not)
 
 %Pagelayout
-%\usepackage[asymmetric, bindingoffset=0cm]{geometry} % niels version was modified with fancyheadr margins
-%\usepackage[a4paper,lmargin={4cm},rmargin={2cm},tmargin={2.5cm},bmargin={2.5cm}]{geometry}
 \usepackage[asymmetric, margin=2.5cm, top=3cm]{geometry} % changes the margins on all pages (easy lanscape mode) (import after hyperref!)
 % asymmetric is needed for left right fancyheader setup. or use the twoside functionality
-\usepackage{perpage} % be able to reset certain counters
-\MakePerPage{footnote} % reset footnotecounter at every page and start from 1
-\usepackage{placeins} % adds \FloatBarrier command to stop floats from floating away
-%\usepackage{bookmark} % needed for the \pdfbookmark command but somehow it works without loading it
-\usepackage{pdflscape} %  Make landscape pages display as landscape
 
 %Units
 \usepackage[separate-uncertainty,exponent-product = \cdot]{siunitx} %Fehler mit +- % \cdot statt x als Multiplikationzeichen % not per-mode=fraction
-\DeclareSIUnit{\arbitraryunit}{a.u.}
-\DeclareSIUnit{\au}{a.u.}
 
 %CodeBlocks
 \usepackage{listings}
-\lstset{basicstyle=\ttfamily \footnotesize, frame=tb}
-%\lstset{showspaces=false, showtabs=false, showstringspaces=false, breaklines=true, postbreak=\mbox{$\hookrightarrow$\space}, columns=fixed}
-%\lstset{numbers=left, numberstyle=\tiny}
-
-%%Appendix Letters
-%\usepackage[nottoc,numbib]{tocbibind} % used to create a Letter of the toc and lof in the Appendix % dont add "contesnts" to the toc and add a numbering (or lettering to the bibliography)
-%\renewcommand{\listoffigures}{\begingroup
-%	\tocsection
-%	\tocfile{\listfigurename}{lof}
-%	\endgroup}
-%\renewcommand{\listoftables}{\begingroup
-%	\tocsection
-%	\tocfile{\listtablename}{lot}
-%	\endgroup}
+\lstset{basicstyle=\ttfamily \footnotesize, frame=none, language=TeX}
 
 %Header und Footer
-%\usepackage[automark,headsepline]{scrlayer-scrpage} % maybe later use this. (better with KOMA-Script classes)
 \usepackage{fancyhdr} % set up the header and footer
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead{} % clear all header fields
-\fancyhead[LE]{\nouppercase{\leftmark}}
-\fancyhead[RO]{\nouppercase{\rightmark}}
-% Markus:
-%\fancyhead[RE,RO]{\thepage}
-%\fancyhead[LE]{\nouppercase{\leftmark}}
-%\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[L]{\nouppercase{\VersuchsNummer: \VersuchsName}}
+\fancyhead[R]{\nouppercase{\leftmark}}
 \fancyfoot{} % clear all footer fields
-\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[C]{\thepage}
 
 % Text
-\usepackage{lipsum} % for lorem ipsum
-\usepackage{blindtext} % "
 \usepackage{xcolor} % color
-\usepackage{multicol} % defines a multicols environment which typesets text in multiple columns
-
-% new commands
-\newcommand{\dd}{\textrm{d}}
 
