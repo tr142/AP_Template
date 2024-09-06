@@ -1,99 +1,108 @@
 
-\documentclass[twoside, 11pt, ngerman, a4paper, biblography=totoc]{scrartcl}
-
-\usepackage{packages} 
+\documentclass[twoside, 11pt, ngerman, a4paper, biblography=totoc]{article}
+\usepackage{packages}
+\fancyhf{}
+\fancyhead{}
+\fancyfoot[C]{\thepage}
 %
-%\lstset{%
-%  language=TeX,                % choose the language of the code
-%  basicstyle=\ttfamily\footnotesize\color{black} ,       % the size of the fonts that    are used for the code
-%  tabsize=2,                      % sets default tabsize to 2 spaces
-%  captionpos=b,                   % sets the caption-position to bottom
-%  breaklines=true,                % sets automatic line breaking
-%  breakatwhitespace=true,         % sets if automatic breaks should only happen at    whitespace
-%  %keywordstyle=\color{white},
-%  %commentstyle=\color{white},
-%  %stringstyle=\color{white},
-%  %numberstyle=\tiny\color{midgray},  % the style that is used for the line-numbers
-%  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
-%                              % will be numbered
-%  numbersep=5pt,                  % how far the line-numbers are from the code
-%  frame=none,
-%  %rulesepcolor=\color{darkgray},
-%  lineskip={-1.5pt}, % single line spacing
-%  aboveskip=1.5\bigskipamount,
-%  belowskip=\smallskipamount,
-%  escapechar={\@},
-%  showstringspaces=false,
-%  %backgroundcolor=\color{black}
-%}
-
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\lstset{ 
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	basicstyle=\ttfamily\footnotesize,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{OliveGreen},    % comment style
+	deletekeywords={...},            % if you want to delete keywords from the given language
+	%escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	firstnumber=1,                % start line enumeration with line 1000
+	frame=single,	                   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=TeX,                 % the language of the code
+	morekeywords={*,...},            % if you want to add more keywords to the set
+	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\small\color{gray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{red},     % string literal style
+	tabsize=2,	                   % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 \begin{document}
 
+
 \section{Beispiele und Tipps}
-Hier ein paar Beispiele und Tipps für das erstellen eures Protokolls mit \LaTeX. Kein Anspruch auf Vollständigkeit.
+Hier ein paar Beispiele und Tipps für das erstellen eures Protokolls mit \LaTeX ohne Anspruch auf Vollständigkeit.
 
-\subsection{Allgemeines}
-Overleaf und ChatGPT
+\subsection{Wie verwende ich LaTeX?}
+Overleaf ist eine Online-Plattform zur Erstellung, Bearbeitung und Zusammenarbeit an LaTeX-Dokumenten, ohne dass eine lokale LaTeX-Installation erforderlich ist. Sie ermöglicht mehreren Nutzern, in Echtzeit an Dokumenten zu arbeiten und bietet zahlreiche Vorlagen sowie Versionskontrolle. Gerade für Anfänger Empfehlenswert. Außerdem gibt es eine umfangreiche help library mit Erklärungen, z.B.: \href{https://www.overleaf.com/learn/latex/Learn\_LaTeX_in_30_minutes}{https://www.overleaf.com/learn/latex/Learn\_LaTeX\_in\_30\_minutes}
 
-\url{https://de.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_1)\%3A_Basic_Structure}
+Natürlich gibt es auch sehr gute lokale Lösungenm, wie TeXStudio und Möglichkeiten der zusammenarbeit über Versionskontrollsysteme wie git.
+
+Als Anfänger ist man immer mit Fragen und Problemen konfrontiert, viele lassen sich aber schnell lösen indem man Google, ChatGPT oder andere LaTeX nutzer fragt. Lasst euch also nicht einschüchtern, als Physiker seit ihr es gewohnt unbekannte Probleme zu lösen.
 
 \subsection{Abbildung}
-Erstellt ihr Plots mit Python o.ä. lohnt es sich immer diese als Vektorgrafik in einer PDF abzuspeichern. Sorgt für kleien Datein und alles bleibt unverpixelt.\\
-
+Erstellt ihr Plots mit Python o.ä. lohnt es sich immer diese als Vektorgrafik in einer PDF abzuspeichern. Sorgt für kleien Datein und alles bleibt unverpixelt.
 Um eine Abbildung einzubinden benötigen wir eine Figure Umgebung. Der Folgende Code
 \begin{lstlisting}[language=Tex]
 \begin{figure}[h]
     \centering
-    \includegraphics[width = 0.8\textwidth]{../figures/example}
+    \includegraphics[width = 0.5\textwidth]{../figures/example}
     \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verstandlich ist.}
     \label{fig:example}
 \end{figure}
 \end{lstlisting}
 erzeugt diese Abbildung:
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{../figures/example}
+    \includegraphics[width = 0.5\textwidth]{../figures/example}
     \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verständlich ist.}
     \label{fig:example}
 \end{figure}
 
 Ein paar Details dazu:
 \begin{itemize}
-	\item \texttt{width = 0.8\textbackslash textwidth} bestimmt die Breite im Verhältnis zur Textbreite des Dokuments
+	\item \texttt{width = 0.5\textbackslash textwidth} bestimmt die Breite im Verhältnis zur Textbreite des Dokuments
 	\item \texttt{../figures/example} ist der (relative) Pfad der Bilddatei. 
 	\item \texttt{\textbackslash label\{fig:example\}} Gibt dem Objekt einen Namen, mit dem wir darauf zugreifen können, z.B. als Verweis: \cref{fig:example} (Verlinkung zum klicken)
-	\item $[$h$]$ definiert die Postion der Abbildung im Dokument (h = here, also möglist nah am Text). Insgesamt ist es nicht notwendig, dass Abbildungen direkt an der Textstelle sind, v.a. wenn das zu halbleeren Seiten führt.
+	\item $[$h$]$ definiert die Postion der Abbildung im Dokument (h = here, also möglist nah am Text; es gibt auch t=top, b=bottom). Insgesamt ist es nicht notwendig, dass Abbildungen direkt an der Textstelle sind, v.a. wenn das zu halbleeren Seiten führt.
 \end{itemize}
 
 Subfigures ermöglichen das Neben/Übereinander stellen mehrerer Figures:
-%
-%\begin{lstlisting}[language=Tex]
-%\begin{figure}
-%     \centering
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{example}
-%         \caption{Subfigure 1}
-%         \label{fig:subfig1}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{example}
-%         \caption{Subfigure 2}
-%         \label{fig:subfig2}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{example}
-%         \caption{Subfigure 3}
-%         \label{fig:subfig3}
-%     \end{subfigure}
-%        \caption{Three figures}
-%        \label{fig:three graphs}
-%\end{figure}
-%\end{lstlisting}
+
+\begin{lstlisting}[language=Tex]
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 1}
+         \label{fig:subfig1}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 2}
+         \label{fig:subfig2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{example}
+         \caption{Subfigure 3}
+         \label{fig:subfig3}
+     \end{subfigure}
+        \caption{Three figures}
+        \label{fig:three graphs}
+\end{figure}
+\end{lstlisting}
 
 %\begin{lstlisting}[language=Tex]
 \begin{figure}[h!]
@@ -126,51 +135,146 @@ Subfigures ermöglichen das Neben/Übereinander stellen mehrerer Figures:
 \texttt{[t]\{0.3\textbackslash textwidth\}} definiert die Breite der Einzelnen Subfigures (alle: 0.3+0.3+0.3 = 0.9).
 
 \subsection{Tabelle}
+\begin{lstlisting}
+	\begin{table}[h] % beginnt Tabellenumgebung (die analog zur Figureumgebung funktioniert)
+	\centering % sorgt dafür, dass alles mittig ausgerichtet ist
+	\caption{Tabellenüberschrift} % caption
+	 \begin{tabular}{c c c c}  % beginn der eigentlichen Tabelle {c c c c} definiert uns 4 spalten deren inhalt zentriert (c=center) ist. Es gibt auch l, r und p (für benutzerdefinierte Breiten)
+	 \hline % horizontale (h) Linie
+	 Index & $T$ / s & $L$ / m \\ % erste Zeile
+	 \hline
+	 1 & 6 & 87837 \\ 
+	 2 & 7 & 78  \\
+	 3 & 545 & 778 \\
+	 4 & 545 & 18744 \\
+	 5 & 88 & 788  \\
+	 \hline
+	 \end{tabular}
+	 \label{tab:Tabelle}
+	\end{table}
+\end{lstlisting}
+
+\begin{table}[H] % beginnt Tabellenumgebung (die analog zur Figureumgebung funktioniert)
+\centering % sorgt dafür, dass alles mittig ausgerichtet ist
+\caption{Tabellenüberschrift} % caption
+\begin{tabular}{c c c c}  % beginn der eigentlichen Tabelle {c c c c} definiert uns 4 spalten deren inhalt zentriert (c=center) ist. Es gibt auch l, r und p (für benutzerdefinierte Breiten)
+\hline % horizontale (h) Linie
+Index & $T$ / s & $L$ / m \\ % erste Zeile
+\hline
+1 & 6 & 87837 \\ 
+2 & 7 & 78  \\
+3 & 545 & 778 \\
+4 & 545 & 18744 \\
+5 & 88 & 788  \\
+\hline
+\end{tabular}
+	 \label{tab:Tabelle}
+\end{table}
 
 \subsection{Verweise und Zitate}
-%\ref{}
-%cref
-%autoref
 
-\subsection{Gleichungen und darstellung von Werten}
+\begin{lstlisting}
+Mit \href{https://github.com/tr142/AP_Template}{Name der Angezeigt wird} \\
+könnt ihr ins Internet verlinken.
 
-align, align* für Werte, equation,\\
-Beispiel für eine Nummer für mehrere Zeilen\\
-Physikalische Größen im Mathmode, Text normal
+Mit \ref{fig:example}, \cref{fig:example,fig:subfig1,fig:subfig2,fig:subfig3} und \autoref{fig:example} könnt ihr auf Abbildungen, referenzieren und verlinken. ref gibt nur die Nummerierung aus, cref und autoref geben gleich noch Tabelle/Figure/\dots mit aus. cref (cleverref) kann auch viele labels sinnvoll zusammenfassen.\\
+
+\cite{beispiel1,beispiel2} ist für das zitieren von Quellen. Wie die Quellen wird global definiert (bibliographystyle) \\
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography.bib}
+\end{lstlisting}
+
+Mit \href{https://github.com/tr142/AP_Template}{Name der Angezeigt wird} 
+könnt ihr ins Internet verlinken.\\
+
+Mit \ref{fig:example}, \cref{fig:example,fig:subfig1,fig:subfig2,fig:subfig3} und \autoref{fig:example} könnt ihr auf Abbildungen, referenzieren und verlinken. ref gibt nur die Nummerierung aus, cref und autoref geben gleich noch Tabelle/Figure/\dots mit aus. cref (cleverref) kann auch viele labels sinnvoll zusammenfassen.\\
+
+\cite{beispiel1,beispiel2} ist für das zitieren von Quellen. Wie die Quellen wird global definiert (bibliographystyle) \\
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography.bib}
+
+\subsection{Gleichungen und Darstellung von Werten}
+\LaTeX hat einen Mathemodus den man mit \$ startet und beendet. Wenn man ganze Zeilen für eine Formel verwendet bieten sich die \texttt{equation}- oder die \texttt{align}-Umgebeung an. \texttt{align} hat den Vorteil, dass sie mehrerer Zeilen haben kann.
+
+\begin{lstlisting}
 \begin{align}
-	E_1&=A+B \label{eq:1}\\
-	\begin{split}
-		E_2&=(C-D)E_1 \label{eq:2}\\
-		&\quad +[(1-R)+R(1-Y)\\
-		&\quad +\pi(1-\delta)]E_2\\
-		&\quad +F\cdot E_3
-	\end{split}\\
-	E_3 &=(\pi\cdot \chi)-(R\cdot E_1)-(RY\delta\cdot E_2) \label{eq:3}
+	C=A+B \label{eq:1}\\ % Label
+	B = \alpha \cdot \beta \label{eq:2}
+\end{align}
+\end{lstlisting}
+\begin{align}
+	C=A+B \label{eq:1}\\ % Label
+	B = \alpha \cdot \beta \label{eq:2}
 \end{align}
 
+\texttt{align} ermöglicht, dass sich eine Gleichung über mehrere Zeilen erstreckt aber nur einmal nummeriert wird:
+
+\begin{lstlisting}
+\begin{align}
+	\begin{split}
+		E_2&=(C-D)E_1 \label{eq:label1}\\
+		&\quad +B\\
+		&\quad +C\\
+		&\quad +F\cdot E
+	\end{split}\\
+\end{align}
+\end{lstlisting}
+\begin{align}
+	\begin{split}
+		E_2&=(C-D)E_1 \label{eq:label1}\\
+		&\quad +B\\
+		&\quad +C\\
+		&\quad +F\cdot E
+	\end{split}\\
+\end{align}
+Mit \texttt{align*} wird gar nichts nummeriert, was vor allem für die Darstellung von Ergebnissen wichtig ist:
+\begin{lstlisting}
+\begin{align*}
+	C=5\,\text{m}
+\end{align*}
+\end{lstlisting}
+\begin{align*}
+	C=5\,\text{m}
+\end{align*}
+
+Beachtet, dass physikalische Größen wie die Masse $m$, Zeit $t$ usw. im Mathmodus dargestellt werden, Bei Benennungen wie $m_\text{Lit.}$ für den Literaturwert, der Text nicht im Mathemodus ist. Das gleiche gilt für Einheiten!
+
 \subsubsection{siunitx}
-Das package \texttt{siunitx} 
+Bei der sauberen Darstellung von Werten mir ihren Unsicherheiten und Einheiten gibt es einige typografische Fallstricke. Die Abstände dürfen nicht zu groß oder klein sein, die Einheiten müssen in Textmodus sein, \dots
+Zum Glück gibt es das usepackage \texttt{siunitx} das das für euch übernimmt. \href{https://www.namsu.de/Extra/pakete/Siunitx.html}{https://www.namsu.de/Extra/pakete/Siunitx.html}
+%
+Kurzbeispiel für die Verwendung:
+\begin{lstlisting}
+\begin{align*}
+	\alpha = \SI{15.4(12)}{\newton\per\second}\\ % Einheiten können mit Namen oder als Buchstaben eingegeben werden
+	\alpha = \SI{15.4(12)}{N.s^{-1}}
+\end{align*}
+\end{lstlisting}
+\begin{align*}
+	\alpha = \SI{15.4(12)}{\newton\per\second}\\ % Einheiten können mit Namen oder als Buchstaben eingegeben werden
+	\alpha = \SI{15.4(12)}{N.s^{-1}}
+\end{align*}
 
-Darstellung der Unsicherheiten als +/-, (), ...
-\begin{verbatim}
-	\SI{Bestwert(Unsicherheit)}{Einheit}
-\end{verbatim}
-
-
-Für optionen siehe z.B.: https://www.namsu.de/Extra/pakete/Siunitx.html
+Mit \texttt{sisetup} können globale Einstellungen z.B.: zur Darstellung von Einheiten unter dem Bruchstrich (\texttt{per-mode}) oder der Darstellung von Unsicherheiten vorgenommen werden.
+\begin{lstlisting}
+	\sisetup{locale = DE,  
+	separate-uncertainty,  
+	range-units = brackets,  
+	list-units = single,  
+	per-mode=symbol-or-fraction}  
+\end{lstlisting}
 
 \subsection{Code}
-Code can in LaTeX z.B. mit dem package \texttt{lstlisting} eingebunden werden. Entweder in der Umgebung
-\begin{verbatim}
+Code can in LaTeX z.B. mit dem package \texttt{lstlisting} eingebunden werden: \href{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}{https://en.wikibooks.org/wiki/LaTeX/Source\_Code\_Listings}. Entweder in der Umgebung
 \begin{lstlisting}
+	\begin{lstlisting}
 		Put your code here.
+	\ end{lstlisting}
 \end{lstlisting}
-\end{verbatim}
 oder aus einer Datei 
-\begin{verbatim}
-		\lstinputlisting{filename.py}
-\end{verbatim}
-%\lstset
-%https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-
+\begin{lstlisting}
+	\lstinputlisting{filename.py}
+\end{lstlisting}
 \end{document}
