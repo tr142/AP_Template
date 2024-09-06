@@ -45,7 +45,7 @@ Um eine Abbildung einzubinden benötigen wir eine Figure Umgebung. Der Folgende 
 \begin{figure}[h]
     \centering
     \includegraphics[width = 0.8\textwidth]{../figures/example}
-    \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verständlich ist.}
+    \caption{Beispielabbildung. Bildunterschriften sollten die Abbildung beschreiben, so dass sie auch ohne Text verstandlich ist.}
     \label{fig:example}
 \end{figure}
 \end{lstlisting}
@@ -66,34 +66,34 @@ Ein paar Details dazu:
 \end{itemize}
 
 Subfigures ermöglichen das Neben/Übereinander stellen mehrerer Figures:
-
-\begin{lstlisting}[language=Tex]
-\begin{figure}
-     \centering
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{example}
-         \caption{Subfigure 1}
-         \label{fig:subfig1}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{example}
-         \caption{Subfigure 2}
-         \label{fig:subfig2}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{example}
-         \caption{Subfigure 3}
-         \label{fig:subfig3}
-     \end{subfigure}
-        \caption{Three figures}
-        \label{fig:three graphs}
-\end{figure}
-\end{lstlisting}
+%
+%\begin{lstlisting}[language=Tex]
+%\begin{figure}
+%     \centering
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example}
+%         \caption{Subfigure 1}
+%         \label{fig:subfig1}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example}
+%         \caption{Subfigure 2}
+%         \label{fig:subfig2}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example}
+%         \caption{Subfigure 3}
+%         \label{fig:subfig3}
+%     \end{subfigure}
+%        \caption{Three figures}
+%        \label{fig:three graphs}
+%\end{figure}
+%\end{lstlisting}
 
 %\begin{lstlisting}[language=Tex]
 \begin{figure}[h!]
@@ -131,7 +131,24 @@ Subfigures ermöglichen das Neben/Übereinander stellen mehrerer Figures:
 %\ref{}
 %cref
 %autoref
-\subsection{siunitx}
+
+\subsection{Gleichungen und darstellung von Werten}
+
+align, align* für Werte, equation,\\
+Beispiel für eine Nummer für mehrere Zeilen\\
+Physikalische Größen im Mathmode, Text normal
+\begin{align}
+	E_1&=A+B \label{eq:1}\\
+	\begin{split}
+		E_2&=(C-D)E_1 \label{eq:2}\\
+		&\quad +[(1-R)+R(1-Y)\\
+		&\quad +\pi(1-\delta)]E_2\\
+		&\quad +F\cdot E_3
+	\end{split}\\
+	E_3 &=(\pi\cdot \chi)-(R\cdot E_1)-(RY\delta\cdot E_2) \label{eq:3}
+\end{align}
+
+\subsubsection{siunitx}
 Das package \texttt{siunitx} 
 
 Darstellung der Unsicherheiten als +/-, (), ...
@@ -153,5 +170,7 @@ oder aus einer Datei
 \begin{verbatim}
 		\lstinputlisting{filename.py}
 \end{verbatim}
+%\lstset
+%https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 
 \end{document}
